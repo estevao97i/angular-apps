@@ -1,0 +1,17 @@
+<section>
+    <ul>
+        <li *ngFor="let atividade of listTodo">
+            <div class="atividade-description">
+                <input type="checkbox" (click)="clickCheck(atividade)">
+                <label for="atividade" [ngClass]="{'line-risk': atividade.check}">{{atividade.description}}</label>
+            </div>
+            <div class="delete-icon">
+                <button>
+                    <img src="../../../../../assets/icons/delete.svg" alt="delete icon">
+                </button>
+            </div>
+        </li>
+    </ul>
+</section>
+<app-todo-input-add-itens></app-todo-input-add-itens>
+<app-todo-button-delete-all></app-todo-button-delete-all>
