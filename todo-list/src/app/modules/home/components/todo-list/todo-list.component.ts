@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnInit, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { Todo } from '../../model/todo.model';
 
 @Component({
@@ -6,8 +6,11 @@ import { Todo } from '../../model/todo.model';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit, AfterViewInit{
+export class TodoListComponent implements AfterViewInit, OnChanges{
 
+  @Input() deleteAll!: boolean;
+  @Input() newTask!: Todo;
+  
   listTodo: Todo[] = []
   check: boolean = false
   draggingElement: HTMLElement | null = null;
@@ -16,30 +19,36 @@ export class TodoListComponent implements OnInit, AfterViewInit{
 
   @ViewChildren('itemAtividade') itemAtividade!: QueryList<ElementRef>;
 
-  constructor() {}
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    this.listTodo.push({check: false , description:'tarefa de casa'})
-    this.listTodo.push({check: false , description:'dormir'})
-    this.listTodo.push({check: false , description:'estudar'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
-    this.listTodo.push({check: false , description:'comer'})
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['deleteAll']) {
+      this.listTodo = [];
+    }
+    if (changes['newTask']?.currentValue != undefined) {
+      // this.listTodo = [...this.listTodo, this.newTask];
+      this.listTodo.push(this.newTask)
+    }
+    this.changeDetector.detectChanges();
+    this.reassignDragAndDropListeners();
   }
   
   ngAfterViewInit() {
+    this.reassignDragAndDropListeners();
+  }
+
+  reassignDragAndDropListeners() {
     this.itemAtividade.forEach(elem => {
-      elem.nativeElement.addEventListener('dragstart', this.onDragStart.bind(this));
+      elem.nativeElement.removeEventListener('dragstart', this.onDragStart.bind(this)); // Remove os listeners antigos
+      elem.nativeElement.removeEventListener('dragend', this.onDragEnd.bind(this));
+      elem.nativeElement.removeEventListener('dragover', this.onDragOver.bind(this));
+      elem.nativeElement.removeEventListener('drop', this.onDrop.bind(this));
+
+      elem.nativeElement.addEventListener('dragstart', this.onDragStart.bind(this)); // Adiciona os listeners novos
       elem.nativeElement.addEventListener('dragend', this.onDragEnd.bind(this));
       elem.nativeElement.addEventListener('dragover', this.onDragOver.bind(this));
       elem.nativeElement.addEventListener('drop', this.onDrop.bind(this));
-    })
+    });
   }
 
   onDragStart(event: DragEvent) {
@@ -112,8 +121,10 @@ export class TodoListComponent implements OnInit, AfterViewInit{
     atividade.check = !atividade.check
   }
 
-  delete(event: any, atividade: any) {
+  delete(event: any, index: number) {
     event.stopPropagation();
+
+    this.listTodo.splice(index, 1);
   }
 
 }

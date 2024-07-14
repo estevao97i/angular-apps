@@ -2,7 +2,9 @@
 
     margin-top: 1rem;
     display: flex;
-    width: 100%;
+    width: 80%;
+    // padding: .5rem 0;
+    margin: .5rem auto;
     justify-content: space-between;
     align-items: center;
     
@@ -18,10 +20,15 @@
     button {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         width: 20%;
-        background-color: rgb(220, 238, 245);
+        background-color: rgb(128, 219, 255);
         border: none;
         height: 2.5rem;
         border-radius: 8px;
+        color: #fff;
         cursor: pointer;
+        
+        &:hover {
+            background-color: rgb(62, 197, 255);
+        }
     }
 }

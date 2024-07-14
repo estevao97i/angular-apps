@@ -3,17 +3,14 @@
 section {
     display: flex;
     justify-content: center;
-    // max-height: 5rem;
     
     ul {
-        padding: 0 1rem;
+        padding: 0.2rem 1rem;
         border-radius: 16px;
         list-style-type: none;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        // overflow-y: auto;
-        // height: 500px;
         justify-content: center;
         width: 100%;
         background-color: transparent;

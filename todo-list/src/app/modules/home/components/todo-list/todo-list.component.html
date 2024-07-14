@@ -8,7 +8,7 @@
                 <label for="atividade" [ngClass]="{'line-risk': atividade.check}" >{{atividade.description}}</label>
             </div>
             <div class="delete-icon">
-                <button (click)="delete($event, atividade)">
+                <button (click)="delete($event, i)">
                     <img src="../../../../../assets/icons/delete.svg" alt="delete icon">
                 </button>
             </div> 

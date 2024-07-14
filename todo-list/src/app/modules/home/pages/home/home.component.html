@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-    <app-todo-list></app-todo-list>
+    <app-todo-list [deleteAll]="deleteAllItens" [newTask]="newTask"></app-todo-list>
 </div>
-<app-todo-input-add-itens></app-todo-input-add-itens>
-<app-todo-button-delete-all></app-todo-button-delete-all>
+<app-todo-input-add-itens (taskEmitter)="addTask($event)"></app-todo-input-add-itens>
+<app-todo-button-delete-all (deleteAllEmitter)="deleteAll($event)"></app-todo-button-delete-all>

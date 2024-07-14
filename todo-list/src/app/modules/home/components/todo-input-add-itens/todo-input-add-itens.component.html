@@ -1,2 +1,2 @@
-<input type="text" placeholder="new task">
-<button>salvar</button>
+<input type="text" placeholder="new task" [formControl]="task" (keyup.enter)="salvarTask(task.value)">
+<button  (click)="salvarTask(task.value)">salvar</button>

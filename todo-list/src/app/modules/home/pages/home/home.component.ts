@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from '../../model/todo.model';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  deleteAllItens!: boolean;
+  newTask!: Todo;
+
+  deleteAll(event: boolean) {
+    this.deleteAllItens = event;
+  }
+
+  addTask(task: Todo) {
+    this.newTask = task;
+  }
 }
