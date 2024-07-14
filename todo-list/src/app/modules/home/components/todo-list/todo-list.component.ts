@@ -10,8 +10,8 @@ export class TodoListComponent implements AfterViewInit, OnChanges, DoCheck {
 
   @Input() deleteAll!: boolean;
   @Input() newTask!: Todo;
-  
-  listTodo: Todo[] = []
+
+  listTodo: Todo[] = JSON.parse(localStorage.getItem('list') || '[]')
   check: boolean = false
   draggingElement: HTMLElement | null = null;
   closestLi: HTMLElement | null = null;
@@ -19,10 +19,10 @@ export class TodoListComponent implements AfterViewInit, OnChanges, DoCheck {
 
   @ViewChildren('itemAtividade') itemAtividade!: QueryList<ElementRef>;
 
-  constructor(private changeDetector: ChangeDetectorRef) {}
+  constructor(private changeDetector: ChangeDetectorRef) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['deleteAll']) {
+    if (changes['deleteAll']?.currentValue != undefined) {
       this.listTodo = [];
     }
     if (changes['newTask']?.currentValue != undefined) {
@@ -31,15 +31,20 @@ export class TodoListComponent implements AfterViewInit, OnChanges, DoCheck {
     this.changeDetector.detectChanges();
     this.reassignDragAndDropListeners();
   }
-  
+
   ngAfterViewInit() {
     this.reassignDragAndDropListeners();
   }
-  
+
   ngDoCheck(): void {
-    this.listTodo.sort((first, last) => {
-      return Number(first.check) - Number(last.check);
-    }) 
+    this.setLocalStorage();
+    // this.listTodo.sort((first, last) => {
+    //   return Number(first.check) - Number(last.check);
+    // }) 
+  }
+
+  setLocalStorage() {
+    localStorage.setItem('list', JSON.stringify(this.listTodo));
   }
 
   reassignDragAndDropListeners() {
@@ -102,12 +107,12 @@ export class TodoListComponent implements AfterViewInit, OnChanges, DoCheck {
   onDrop(event: DragEvent) {
     event.preventDefault();
     if (!event.dataTransfer) return;
-    
+
     const target = event.target as HTMLElement;
     const fromIndex = parseInt(event.dataTransfer.getData('index'), 10);
     const closetLi = target.closest('li')!;
     const toIndex = this.getElementIndex(closetLi);
-    
+
     if (fromIndex !== toIndex) {
       const movedItem = this.listTodo.splice(fromIndex, 1)[0];
       this.listTodo.splice(toIndex, 0, movedItem);
