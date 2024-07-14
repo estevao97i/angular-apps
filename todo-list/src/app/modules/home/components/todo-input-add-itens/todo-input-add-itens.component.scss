@@ -1,0 +1,27 @@
+:host {
+
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    
+    input {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        width: 78%;
+        border: none;
+        height: 2.5rem;
+        border-radius: 8px;
+        padding: 8px 12px;
+    }
+    
+    button {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        width: 20%;
+        background-color: rgb(220, 238, 245);
+        border: none;
+        height: 2.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+}

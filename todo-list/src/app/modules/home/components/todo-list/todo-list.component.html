@@ -1,17 +1,17 @@
 <section>
     <ul>
-        <li *ngFor="let atividade of listTodo">
+        <li *ngFor="let atividade of listTodo; let i = index"
+         (click)="clickCheck(atividade)"
+         [ngClass]="{'background-item': atividade.check}" #itemAtividade id="item" draggable="true">
             <div class="atividade-description">
-                <input type="checkbox" (click)="clickCheck(atividade)">
-                <label for="atividade" [ngClass]="{'line-risk': atividade.check}">{{atividade.description}}</label>
+                <!-- <input type="checkbox" > -->
+                <label for="atividade" [ngClass]="{'line-risk': atividade.check}" >{{atividade.description}}</label>
             </div>
             <div class="delete-icon">
-                <button>
+                <button (click)="delete($event, atividade)">
                     <img src="../../../../../assets/icons/delete.svg" alt="delete icon">
                 </button>
-            </div>
+            </div> 
         </li>
     </ul>
 </section>
-<app-todo-input-add-itens></app-todo-input-add-itens>
-<app-todo-button-delete-all></app-todo-button-delete-all>

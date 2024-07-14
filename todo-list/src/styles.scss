@@ -10,10 +10,13 @@
 }
 
 body {
+    height: calc(100dvh - 3.5rem);
     background: $background-color;
 }
 
 .container {
-    width: 350px;
+    width: 400px;
     margin: 50px auto;
+    max-height: 65vh;
+    overflow-y: auto;
 }
