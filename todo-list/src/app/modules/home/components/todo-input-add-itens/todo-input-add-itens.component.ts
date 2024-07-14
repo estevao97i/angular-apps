@@ -14,10 +14,11 @@ export class TodoInputAddItensComponent {
   task = new FormControl('');
 
   salvarTask(task: any) {
-    if (!task) return
+    const newTask = task.trim();
+    if (!newTask) return
     this.taskEmitter.emit({
       check: false,
-      description: task
+      description: newTask
     })
     this.task.reset();
   }

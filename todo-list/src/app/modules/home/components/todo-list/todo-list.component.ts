@@ -26,8 +26,7 @@ export class TodoListComponent implements AfterViewInit, OnChanges{
       this.listTodo = [];
     }
     if (changes['newTask']?.currentValue != undefined) {
-      // this.listTodo = [...this.listTodo, this.newTask];
-      this.listTodo.push(this.newTask)
+      this.listTodo = [...this.listTodo, this.newTask]
     }
     this.changeDetector.detectChanges();
     this.reassignDragAndDropListeners();
