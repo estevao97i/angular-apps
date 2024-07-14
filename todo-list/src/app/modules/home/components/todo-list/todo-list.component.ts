@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnInit, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, DoCheck, ElementRef, Input, OnChanges, OnInit, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { Todo } from '../../model/todo.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Todo } from '../../model/todo.model';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements AfterViewInit, OnChanges{
+export class TodoListComponent implements AfterViewInit, OnChanges, DoCheck {
 
   @Input() deleteAll!: boolean;
   @Input() newTask!: Todo;
@@ -34,6 +34,12 @@ export class TodoListComponent implements AfterViewInit, OnChanges{
   
   ngAfterViewInit() {
     this.reassignDragAndDropListeners();
+  }
+  
+  ngDoCheck(): void {
+    this.listTodo.sort((first, last) => {
+      return Number(first.check) - Number(last.check);
+    }) 
   }
 
   reassignDragAndDropListeners() {
