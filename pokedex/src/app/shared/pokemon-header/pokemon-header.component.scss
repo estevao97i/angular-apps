@@ -1,0 +1,14 @@
+@import '../../../config-scss/rem-calc.scss';
+
+:host {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: remcalc(12) remcalc(0);
+
+    img {
+        width: remcalc(100);
+        height: remcalc(100);
+    }
+}
