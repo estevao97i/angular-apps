@@ -1,9 +1,13 @@
 :host {
 
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0 0 0;
+
     .pokemon {
         display: flex;
         justify-content: space-between;
-        background-color: antiquewhite;
+        background-color: white;
         width: 49%;
         padding: 1.3rem;
 
@@ -41,10 +45,13 @@
         }
 
         &__image {
-    
+            
             img {
+                clip-path: circle();
                 width: 4rem;
                 height: 4rem;
+
+                mix-blend-mode:multiply;
             }
         }
 
