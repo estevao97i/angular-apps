@@ -3,12 +3,15 @@
     display: flex;
     gap: 1rem;
     padding: 1rem 0 0 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    // flex-direction: column;
 
     .pokemon {
         display: flex;
         justify-content: space-between;
         background-color: white;
-        width: 49%;
+        width: 40%;
         padding: 1.3rem;
 
         border-radius: 8px;
@@ -48,8 +51,8 @@
             
             img {
                 clip-path: circle();
-                width: 4rem;
-                height: 4rem;
+                width: 7rem;
+                height: 7rem;
 
                 mix-blend-mode:multiply;
             }
