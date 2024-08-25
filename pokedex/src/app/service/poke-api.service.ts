@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokeApiService {
+
+  searchPokemon = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +20,13 @@ export class PokeApiService {
         ).subscribe(res => resPokemons.status = res)
       })
     ))
+  }
+
+  getSearchPokemon(): Observable<string> {
+    return this.searchPokemon.asObservable();
+  }
+
+  setSearchPokemon(name: string): void {
+    this.searchPokemon.next(name);
   }
 }
