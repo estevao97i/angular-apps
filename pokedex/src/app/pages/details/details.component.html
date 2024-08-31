@@ -1,1 +1,17 @@
-<p>details works!</p>
+<section *ngIf="pokemon" class="tab-pokemon">
+    <header class="fadeIn">
+        <h1>{{pokemon[1].names[6].name}}</h1>
+        <h3 >{{pokemon[1].names[0].name}}</h3>
+    </header>
+    <div class="image-poke slideInLeft">
+        <img [src]="pokemon[0].sprites.other.dream_world.front_default" alt="">
+    </div>
+    <footer>
+        <article class="stats-pokemon ">
+            <label *ngFor="let value of pokemon[0].stats" class="fadeIn">
+                <label class="name-pokemon slideInLeft">{{value.stat.name}}</label>
+                <label class="status-pokemon slideInLeft">{{value.base_stat}}</label> 
+            </label>
+        </article>
+    </footer>
+</section>

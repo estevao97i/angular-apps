@@ -14,12 +14,18 @@ export class PokeApiService {
   getAllPokemon(): Observable<any> {
     return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=150`).
     pipe(
+      tap(res => res),
       tap(res => res.results.map((resPokemons: any) => {
-        this.http.get<any>(resPokemons.url).pipe(
-          map(res => res)
-        ).subscribe(res => resPokemons.status = res)
+        this.getPokemon(resPokemons.url)
+        .subscribe(res => resPokemons.status = res)
       })
     ))
+  }
+
+  getPokemon(pokemonApi: any): Observable<any> {
+    return this.http.get<any>(pokemonApi).pipe(
+      map(res => res)
+    )
   }
 
   getSearchPokemon(): Observable<string> {
