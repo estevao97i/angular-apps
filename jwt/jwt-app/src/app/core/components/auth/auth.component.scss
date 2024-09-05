@@ -21,10 +21,11 @@
             justify-content: center;
 
             h2 {
-                color: #595959;
+                color: #707070;
+                font-size: 18px;
+                font-weight: 500;
                 padding: 1rem 7rem;
                 border-radius: 58px;
-                font-weight: 300;
                 background: linear-gradient(145deg, #d1d1d1, #f8f8f8);
                 box-shadow:  11px 11px 22px #c5c5c5,
                              -11px -11px 22px #ffffff;
@@ -58,6 +59,7 @@
             height: 30%;
 
             button {
+                font-weight: 400;
                 padding: 1rem 3rem;
                 border-radius: 58px;
                 background: #e8fbff;
