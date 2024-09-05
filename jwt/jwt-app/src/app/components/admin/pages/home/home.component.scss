@@ -1,0 +1,33 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    height: 100vh;
+
+
+    .modal-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 400px;
+        height: 30%;
+        border-radius: 16px;
+        border-radius: 58px;
+                background: #e6e6e6;
+                box-shadow: 11px 11px 22px #bebebe,
+                    -11px -11px 22px #ffffff;
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 3rem;
+            border-radius: 16px;
+            border-radius: 58px;
+                background: #f5fdff;
+                box-shadow: 11px 11px 22px #bebebe,
+                    -11px -11px 22px #ffffff;
+        }
+    }
+}

@@ -1,0 +1,81 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    height: 100vh;
+
+
+    .modal-login {
+        width: 400px;
+        height: 50%;
+        border-radius: 16px;
+        border-radius: 58px;
+        background: #e6e6e6;
+        box-shadow: 11px 11px 22px #bebebe,
+            -11px -11px 22px #ffffff;
+
+        header {
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+
+            h2 {
+                color: #ffffff;
+                padding: 1rem 7rem;
+                border-radius: 58px;
+                background: #707070;
+                box-shadow: 11px 11px 22px #bebebe,
+                    -11px -11px 22px #ffffff;
+            }
+        }
+
+        section {
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            input {
+                width: 70%;
+                border-radius: 16px;
+                padding: 1rem;
+                border-radius: 58px;
+                background: #ffffff;
+                box-shadow: 11px 11px 22px #bebebe,
+                    -11px -11px 22px #ffffff;
+            }
+        }
+
+        footer {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30%;
+
+            button {
+                padding: 1rem 3rem;
+                border-radius: 58px;
+                background: #e8fbff;
+                box-shadow: 11px 11px 22px #bebebe,
+                    -11px -11px 22px #ffffff;
+
+                &:not(.invalid):hover  {
+                    background: #d1e2e5;
+                    box-shadow: 11px 11px 22px #bebebe,
+                        -11px -11px 22px #ffffff;
+                    cursor: pointer;
+                }
+
+                & .invalid {
+                    // cursor: not-allowed;
+                    // opacity: 0.6;
+                    /* Para dar um visual de desabilitado */
+                }
+            }
+        }
+    }
+}

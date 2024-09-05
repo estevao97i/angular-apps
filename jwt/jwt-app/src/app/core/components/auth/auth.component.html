@@ -1,0 +1,14 @@
+<div class="modal-login fadeIn">
+<form [formGroup]="form">
+        <header class="slideInLeft">
+            <h2>Login</h2>
+        </header>
+        <section class="slideInLeft">
+            <input type="email" placeholder="email" formControlName="email" required email>
+            <input type="password" placeholder="senha" formControlName="senha" required>
+        </section>
+        <footer class="slideInLeft">
+            <button [routerLink]="['admin']" [disabled]="form.invalid" [class.invalid]="form.invalid">Entrar</button>
+        </footer>
+    </form>
+</div>
