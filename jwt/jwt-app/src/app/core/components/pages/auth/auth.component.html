@@ -1,14 +1,18 @@
 <div class="modal-login fadeIn">
-<form [formGroup]="form" (ngSubmit)="ngSubmit()">
+    <form [formGroup]="form" (ngSubmit)="ngSubmit()">
         <header class="slideInLeft">
             <h2>Login</h2>
         </header>
+        <div class="error-msg">
+            <label>{{ messageErr }}</label>
+        </div>
         <section class="slideInLeft">
             <input type="email" placeholder="email" formControlName="email" required email>
             <input type="password" placeholder="password" formControlName="password" required>
         </section>
         <footer class="slideInLeft">
-            <button [routerLink]="['admin']" [disabled]="form.invalid" [class.invalid]="form.invalid">Entrar</button>
+            <button  [disabled]="form.invalid" [class.invalid]="form.invalid">Entrar</button>
         </footer>
     </form>
 </div>
+<!-- [routerLink]="['admin']" -->

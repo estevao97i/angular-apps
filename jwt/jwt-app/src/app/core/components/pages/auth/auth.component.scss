@@ -8,7 +8,7 @@
 
     .modal-login {
         width: 400px;
-        height: 50%;
+        height: min-content;
         border-radius: 16px;
         border-radius: 58px;
         background: #e6e6e6;
@@ -27,8 +27,8 @@
                 padding: 1rem 7rem;
                 border-radius: 58px;
                 background: linear-gradient(145deg, #d1d1d1, #f8f8f8);
-                box-shadow:  11px 11px 22px #c5c5c5,
-                             -11px -11px 22px #ffffff;
+                box-shadow: 11px 11px 22px #c5c5c5,
+                    -11px -11px 22px #ffffff;
             }
         }
 
@@ -52,7 +52,7 @@
         }
 
         footer {
-            padding-top: 2rem;
+            padding: 2rem 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -75,6 +75,12 @@
 
                 & .invalid {}
             }
+        }
+
+        .error-msg {
+            text-align: center;
+            z-index: 1;
+
         }
     }
 }

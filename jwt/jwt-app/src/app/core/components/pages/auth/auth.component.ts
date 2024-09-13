@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth.service';
 export class AuthComponent implements OnInit {
 
   form!: FormGroup
+  messageErr!: any;
   constructor(private fb: FormBuilder, private service: AuthService) {}
   
   ngOnInit(): void {
@@ -20,11 +21,11 @@ export class AuthComponent implements OnInit {
   }
 
   ngSubmit() {
+    this.messageErr = null;
     this.service.getAuth(this.form.getRawValue()).subscribe({
       next: () => {},
-      error: (err) => console.log
+      error: (err) => this.messageErr = err
     });
-    console.log(this.form.getRawValue());
   }
 
 }
