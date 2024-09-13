@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,13 +10,21 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AuthComponent implements OnInit {
 
   form!: FormGroup
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private service: AuthService) {}
   
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: [],
-      senha: []
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.min(3)]]
     })
+  }
+
+  ngSubmit() {
+    this.service.getAuth(this.form.getRawValue()).subscribe({
+      next: () => {},
+      error: (err) => console.log
+    });
+    console.log(this.form.getRawValue());
   }
 
 }
