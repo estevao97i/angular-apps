@@ -1,0 +1,26 @@
+.left-content {
+    height: 100%;
+    width: 70%;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+
+    .top-content {
+        height: 20%;
+        width: 100%;
+        border: 2px solid orange;
+        flex-grow: 1;
+    }
+
+    .bottom-content {
+        height: 80%;
+        width: 100%;
+        border: 2px solid greenyellow;
+    }
+}
+
+.right-content {
+    height: 100%;
+    width: 30%;
+    border: 2px solid blue;
+}
