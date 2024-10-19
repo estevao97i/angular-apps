@@ -1,13 +1,13 @@
 <section class="container">
     <div class="left-content">
         <div class="top-content">
-            <app-search></app-search>
+            <app-search (req)="filterUsers($event)"></app-search>
         </div>
         <div class="bottom-content">
-            
+            <app-list (userEmitter)="selectUser($event)" [filter]="filter"></app-list>
         </div>
     </div>
     <div class="right-content">
-        <app-detail-component></app-detail-component>
+        <app-detail-component [userSelected]="selectedUser"></app-detail-component>
     </div>
 </section>

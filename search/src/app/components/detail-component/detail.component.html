@@ -1,32 +1,32 @@
-<div class="detail">
+<div class="detail" *ngIf="userSelected">
     <h2>Detalhes User</h2>
     <mat-list role="list">
         <mat-list-item >
-            <span class="mat-h3">nome: </span><span class="mat-h3">18</span>
+            <span class="mat-h3">nome: </span><span class="mat-h3">{{ userSelected.nome | empty }}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item >
-            <span class="mat-h3">email: </span><span class="mat-h3">18</span>
+            <span class="mat-h3">email: </span><span class="mat-h3">{{ userSelected.email }}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item >
-            <span class="mat-h3">telefone: </span><span class="mat-h3">18</span>
+            <span class="mat-h3">telefone: </span><span class="mat-h3">{{ userSelected.telefone | telefone | empty }}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item >
-            <span class="mat-h3">endereco: </span><span class="mat-h3">18</span>
+            <span class="mat-h3">endereco: </span><span class="mat-h3">{{ userSelected.endereco | endereco }}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item >
-            <span class="mat-h3">ativo: </span><span class="mat-h3">18</span>
+            <span class="mat-h3">ativo: </span><span class="mat-h3">{{ userSelected.ativo | ativoBoolean }}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item >
-            <span class="mat-h3">funcao: </span><span class="mat-h3">18</span>
+            <span class="mat-h3">funcao: </span><span class="mat-h3">{{ userSelected.funcao | empty }}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item >
-            <span class="mat-h3">data de cadastro: </span><span class="mat-h3">18</span>
+            <span class="mat-h3">data de cadastro: </span><span class="mat-h3">{{ userSelected.dataCadastro | date: 'dd/MM/yyyy' }}</span>
         </mat-list-item>
         <mat-divider></mat-divider>
     </mat-list>
