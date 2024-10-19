@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { UsersList } from 'src/app/data/user-list';
 import { IUser } from 'src/app/interfaces/user.interface';
 
 @Component({
@@ -9,24 +8,23 @@ import { IUser } from 'src/app/interfaces/user.interface';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements AfterViewInit, OnChanges {
+export class ListComponent implements OnInit ,AfterViewInit, OnChanges {
 
   displayedColumns = ['nome', 'email', 'idade', 'ativo'];
   dataSource: any;
 
   @Input() filter: any;
+  @Input() filteredList!: IUser[];
   @Output() userEmitter: EventEmitter<IUser> = new EventEmitter();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  
-  constructor() {
-    this.dataSource = new MatTableDataSource<IUser>(UsersList);
 
-    console.log(this.dataSource.data)
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource<IUser>(this.filteredList);
   }
-
+  
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['filter'].currentValue) {
-      this.filtrarUsers(this.filter);
+    if (changes['filteredList'].currentValue) {
+      this.dataSource = new MatTableDataSource<IUser>(this.filteredList);
     }
   }
 
@@ -35,26 +33,6 @@ export class ListComponent implements AfterViewInit, OnChanges {
   }
 
   selected(user: IUser) {
-    // console.log(user)
     this.userEmitter.emit(user);
   }
-
-  filtrarUsers(filter: any) {
-    this.dataSource = new MatTableDataSource<IUser>(UsersList);
-
-    console.log(filter)
-    if (Object.values(filter).every((r: any) => (!r && typeof r != 'boolean'))) {
-      return;
-    }
-
-    const res = this.dataSource.filteredData.filter((res: IUser) => {
-      return (filter.nome === null || res.nome.toUpperCase().startsWith(filter.nome.toUpperCase()))
-              && (filter.status === null || res.ativo === filter.status)
-              // && ((filter.dataInicio === null && filter.dataFim === null)
-              // || (res.dataCadastro >= filter.dataInicio && res.dataCadastro <= filter.dataFim))
-    })
-
-    this.dataSource = new MatTableDataSource<IUser>(res);
-  }
-
 }

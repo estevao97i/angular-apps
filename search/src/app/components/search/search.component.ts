@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Filter } from 'src/app/interfaces/filter.interface';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
-  @Output() req: EventEmitter<any> = new EventEmitter();
+  @Output() req: EventEmitter<Filter> = new EventEmitter();
 
   form: FormGroup = {} as FormGroup;
 
