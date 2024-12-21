@@ -13,7 +13,7 @@ export class UserService {
             setTimeout(() => {
                 observer.next(Mock.users);
                 observer.complete();
-            }, 2000);
+            }, 200);
         })
     }
 }
@@ -25,6 +25,7 @@ export class Mock {
             name: 'Usuário 1',
             username: 'usuario1',
             email: 'usuario1@example.com',
+            url: 'https://storage.googleapis.com/pod_public/1300/173932.jpg',
             password: 'senha1',
             birthDate: '01/12/1990',
             state: 13,
@@ -38,6 +39,7 @@ export class Mock {
             name: 'Usuário 2',
             username: 'usuario2',
             email: 'usuario2@example.com',
+            url: 'https://wendellcarvalho.com.br/wp-content/uploads/2023/07/Saiba-o-que-e-uma-pessoa-temperamental-e-como-esse-comportamento-pode-afetar-diferentes-areas-da-vida.jpg"',
             password: 'senha2@44',
             birthDate: '02/02/1995',
             state: 50,
@@ -51,6 +53,7 @@ export class Mock {
             name: 'Usuário 3',
             username: 'usuario3',
             email: 'usuario3@example.com',
+            url: 'https://revistapesquisa.fapesp.br/wp-content/uploads/2020/05/012-017_notas_291-11.jpg',
             password: 'senha3@123@122',
             birthDate: '03/03/2000',
             state: 42,

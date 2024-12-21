@@ -4,7 +4,7 @@ import { GenreService } from './services/genre.service';
 import { StatesBrazilService } from './services/states-brazil.service';
 import { forkJoin } from 'rxjs';
 import { UserPlaceHolderService } from './services/user-placeholder.service';
-import { Users } from './interfaces/user/user.model';
+import { IUser, Users } from './interfaces/user/user.model';
 import { Genres } from './interfaces/genres/genre.model';
 import { States } from './interfaces/states/states.model';
 import { UsersPlaceHolder } from './interfaces/user-placeholder/user-placeholder.model';
@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
   statesBrazil: States = [];
   usersPlaceHolder: UsersPlaceHolder = [];
   newUsers: Users = [];
+  userIdSelected: number | undefined;
+  userSelected: IUser = {} as IUser;
 
   constructor(
     private readonly _userService: UserService,
@@ -73,5 +75,14 @@ export class AppComponent implements OnInit {
 
   private atualizarGenero(music: any): any {
     return this.genres.find(genre => genre.id === music.genre)?.description || 'genero nao encontrado';
+  }
+
+  onUserSelected(index: number) {
+    const user = this.newUsers[index];
+
+    if (user) {
+      this.userIdSelected = index;
+      this.userSelected = structuredClone(user);
+    }
   }
 }

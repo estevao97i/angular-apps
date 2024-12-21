@@ -1,0 +1,21 @@
+.detail-card {
+
+    outline-width: 1px;
+    outline-offset: 1px;
+    outline-color: rgba(0, 0, 0, 0.3);
+    outline-style: solid;
+    border-radius: 6px;
+    
+    & ::ng-deep  * {
+        box-shadow: none;
+    }
+    
+    & * .outline {
+        outline-width: 1px;
+        outline-offset: 1px;
+        outline-color: rgba(0, 0, 0, 0.3);
+        outline-style: solid;
+        border-radius: 6px;
+
+    }
+}

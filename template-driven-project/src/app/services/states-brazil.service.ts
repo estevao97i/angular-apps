@@ -11,7 +11,7 @@ export class StatesBrazilService {
             setTimeout(() => {
                 observer.next(Mock.statesBrazil);
                 observer.complete();
-            }, 3000);
+            }, 200);
         })
     }
 }

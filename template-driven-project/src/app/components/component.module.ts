@@ -5,10 +5,12 @@ import { BrowserModule } from "@angular/platform-browser";
 import { PipeModule } from "../pipes/pipes.module";
 import { DirectiveModule } from "../directives/directive.module";
 import { UsersCardListComponent } from './users-card-list/users-card-list.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
     declarations: [
-    UsersCardListComponent
+    UsersCardListComponent,
+    UserFormComponent
   ],
     imports: [
         FormsModule,
@@ -18,7 +20,8 @@ import { UsersCardListComponent } from './users-card-list/users-card-list.compon
         AngularMaterialModule,
     ],
     exports: [
-        UsersCardListComponent
+        UsersCardListComponent,
+        UserFormComponent
     ]
 })
 export class ComponentModule {}

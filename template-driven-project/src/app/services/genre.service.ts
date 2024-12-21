@@ -11,7 +11,7 @@ export class GenreService {
             setTimeout(() => {
                 observer.next(Mock.genres);
                 observer.complete();
-            }, 3000)
+            }, 200)
         })
     }
 }

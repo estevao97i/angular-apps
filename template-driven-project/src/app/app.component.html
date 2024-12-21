@@ -1,9 +1,8 @@
-<!-- <div>teste users:</div> -->
 <div class="users">
-    <!-- {{ user | json }} -->
-    <app-users-card-list [usersList]="newUsers"></app-users-card-list>
-    <!-- <app-users-card-list></app-users-card-list>
-    <app-users-card-list></app-users-card-list> -->
-    <!-- <br><br><br> -->
-
+  <div class="header-user">
+    <app-users-card-list [usersList]="newUsers" (userSelected)="onUserSelected($event)"></app-users-card-list>
+  </div>
+  <div>
+    <app-user-form></app-user-form>
+  </div>
 </div>

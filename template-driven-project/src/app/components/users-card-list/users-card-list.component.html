@@ -1,12 +1,25 @@
 <div class="card">
-    <div *ngFor="let user of usersList" class="user__list">
+    <div *ngFor="let user of usersList, let index = index" class="user__list" (click)="onUserSelected(index)">
         <mat-card>
             <mat-card-header>
-                <mat-card-title>{{ user.name }}</mat-card-title>
-                <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+                <div class="header-content">
+                    <div>
+                        <mat-card-title>{{ user.name }}</mat-card-title>
+                        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+                    </div>
+                    <div>
+                        <img mat-card-image [src]="user.url"
+                         alt="Photo of a Shiba Inu"
+                         class="imagem">
+                    </div>
+                </div>
             </mat-card-header>
             <mat-card-content>
             </mat-card-content>
         </mat-card>
     </div>
 </div>
+
+<ng-container>
+
+</ng-container>

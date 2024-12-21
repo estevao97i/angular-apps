@@ -5,18 +5,16 @@
     gap: 2rem;
     
     & .user__list {
-        // display: flex;
         width: 33%;
         cursor: pointer;
-        // border: .5px solid black;
         outline-width: 1px;
         outline-offset: 1px;
-        outline-color: black;
+        outline-color: rgba(0, 0, 0, 0.3);
         outline-style: solid;
         border-radius: 6px;
+        color: rgba(0, 0, 0, 0.3);
         
         &:hover {
-            // outline-style: none;
             outline: 1px solid red;
             
             & ::ng-deep * {
@@ -28,9 +26,23 @@
             color: rgb(72, 72, 72);
             box-shadow: none !important;
         }
+
+        .imagem {
+            width: 60px !important;
+            height: 60px !important;
+            border-radius: 25%;
+            object-fit: cover;
+        }
+
+        .header-content {
+            width: 100%;
+            display: flex !important;
+            justify-content: space-between !important;
+        }
     }
 }
 
 .card-mat {
     width: 20rem;
 }
+
