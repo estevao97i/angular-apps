@@ -1,0 +1,36 @@
+.card {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    
+    & .user__list {
+        // display: flex;
+        width: 33%;
+        cursor: pointer;
+        // border: .5px solid black;
+        outline-width: 1px;
+        outline-offset: 1px;
+        outline-color: black;
+        outline-style: solid;
+        border-radius: 6px;
+        
+        &:hover {
+            // outline-style: none;
+            outline: 1px solid red;
+            
+            & ::ng-deep * {
+                color: red !important;
+            }
+        }
+        
+        & ::ng-deep > * {
+            color: rgb(72, 72, 72);
+            box-shadow: none !important;
+        }
+    }
+}
+
+.card-mat {
+    width: 20rem;
+}
