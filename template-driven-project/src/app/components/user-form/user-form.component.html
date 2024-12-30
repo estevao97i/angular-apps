@@ -1,29 +1,53 @@
 <div class="detail-card">
-    <mat-card>
+    <mat-card *ngIf="userSelected">
         <mat-card-header>
-            card top
+            Detalhes
         </mat-card-header>
         <mat-card-content>
             <form class="user__form">
                 <div class="row">
-                    <div class="col-12">
-                        <input type="text" style="width: 100%; padding: .5rem;">
-                    </div>
-                    <!-- <div class="col-2 outline">
-                        <mat-card>
-                            <mat-card-content>
-                                
-                            </mat-card-content>
-                        </mat-card>
-                    </div> -->
+                    <mat-form-field class="col-12">
+                        <mat-label>Nome</mat-label>
+                        <input type="text" matInput name="nome" [(ngModel)]="userSelected.name" required />
+                        <mat-error><strong>Nome Obrigatório</strong></mat-error>
+                    </mat-form-field>
                 </div>
                 <div class="row">
-                    <div class="col-6">
-                        <input type="text" style="width: 100%; padding: .5rem;">
-                    </div>
-                    <div class="col-6">
-                        <input type="text" style="width: 100%; padding: .5rem;">
-                    </div>
+                    <mat-form-field class="col-6">
+                        <mat-label>Usuário</mat-label>
+                        <input 
+                        type="text"
+                        matInput name="usuario" 
+                        [(ngModel)]="userSelected.username"
+                        [ngModelOptions]="{ updateOn: 'blur' }"
+                        #usernameControl="ngModel"
+                        [appCredentialsValidator]="'username'"
+                        required
+                        >
+                        <mat-hint>O <strong>Usuário</strong> será utilizado para o Login</mat-hint>
+                        <mat-error *ngIf="usernameControl.hasError('required')"><strong>Usuário Obrigatório</strong></mat-error>
+                        <mat-error 
+                        *ngIf="usernameControl.hasError('invalidUsername') && !usernameControl.hasError('required')">
+                        Nome de <strong>Usuário</strong> já utilizado</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-6">
+                        <mat-label>Email</mat-label>
+                        <input 
+                        type="text" 
+                        matInput name="email" 
+                        [(ngModel)]="userSelected.email" 
+                        [ngModelOptions]="{ updateOn: 'blur' }"
+                        #emailControl="ngModel"
+                        appEmailValidator 
+                        [appCredentialsValidator]="'email'"
+                        required
+                        >
+                        <mat-error *ngIf="emailControl.hasError('required')"><strong>Email Obrigatório</strong></mat-error>
+                        <mat-error *ngIf="emailControl.hasError('emailPattern')
+                        && !emailControl.hasError('required')"><strong>Email Inváido</strong></mat-error>
+                        <mat-error *ngIf="emailControl.hasError('invalidEmail')
+                        && !emailControl.hasError('required')"><strong>Email</strong> já utilizado.</mat-error>
+                    </mat-form-field>
                 </div>
             </form>
         </mat-card-content>

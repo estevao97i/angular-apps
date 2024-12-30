@@ -2,7 +2,10 @@
   <div class="header-user">
     <app-users-card-list [usersList]="newUsers" (userSelected)="onUserSelected($event)"></app-users-card-list>
   </div>
-  <div>
-    <app-user-form></app-user-form>
+  <div *ngIf="userSelected">
+    <app-user-form 
+    [statesBrasil]="statesBrazil"
+    [genres]="genres"
+    [userSelected]="userSelected"></app-user-form>
   </div>
 </div>

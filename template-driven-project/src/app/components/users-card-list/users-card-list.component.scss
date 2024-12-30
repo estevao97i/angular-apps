@@ -15,7 +15,7 @@
         color: rgba(0, 0, 0, 0.3);
         
         &:hover {
-            outline: 1px solid red;
+            outline: 1px solid #ff0000;
             
             & ::ng-deep * {
                 color: red !important;
@@ -44,5 +44,32 @@
 
 .card-mat {
     width: 20rem;
+}
+
+.background-card {
+    outline: none !important;
+
+    & ::ng-deep > * {
+        outline: 1px solid #ff0000;
+        background-color: #ffffff !important;
+        color: red !important;
+        box-shadow: none !important;
+        border-radius: 6px;
+        
+        & mat-card-subtitle {
+            color: red !important;
+        }
+    }
+    
+    & ::ng-deep *  {
+        box-shadow: none !important;
+    }
+    transform: scale(1.02) skewX(.3deg);
+    transition: .3s;
+}
+
+.background-unselect {
+    transform: scale(1) skewX(0deg);
+    transition: .3s;
 }
 

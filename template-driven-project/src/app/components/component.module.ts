@@ -6,6 +6,7 @@ import { PipeModule } from "../pipes/pipes.module";
 import { DirectiveModule } from "../directives/directive.module";
 import { UsersCardListComponent } from './users-card-list/users-card-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { EmailValidatorDirective } from "../directives/email-validator.directive";
 
 @NgModule({
     declarations: [

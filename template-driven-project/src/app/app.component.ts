@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   usersPlaceHolder: UsersPlaceHolder = [];
   newUsers: Users = [];
   userIdSelected: number | undefined;
-  userSelected: IUser = {} as IUser;
+  userSelected: IUser | undefined = undefined;
 
   constructor(
     private readonly _userService: UserService,
@@ -77,7 +77,11 @@ export class AppComponent implements OnInit {
     return this.genres.find(genre => genre.id === music.genre)?.description || 'genero nao encontrado';
   }
 
-  onUserSelected(index: number) {
+  onUserSelected(index: number | null) {
+    if (index === null) {
+      this.userSelected = undefined;
+      return;
+    }
     const user = this.newUsers[index];
 
     if (user) {
