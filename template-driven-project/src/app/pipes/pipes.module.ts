@@ -1,7 +1,12 @@
 import { NgModule } from "@angular/core";
+import { ProgressBarPipe } from './progress-bar.pipe';
 
 @NgModule({
-    imports: [],
-    exports: []
+  declarations: [
+    ProgressBarPipe
+  ],
+  exports: [
+    ProgressBarPipe
+  ],
 })
 export class PipeModule {}

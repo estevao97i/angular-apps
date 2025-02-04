@@ -43,22 +43,33 @@
                         <mat-label>Senha</mat-label>
                         <input matInput
                             [(ngModel)]="userSelected.password"
+                            (ngModelChange)="changeSenha()"
                             name="senha"
                             type="password"
                             #passwordControl="ngModel"
                             AppPasswordStrength
                             required
                         />
+                        <div style="position: relative; top: 6px;">
+                            <mat-progress-bar 
+                                [class.weak-password]="((userSelected.password | progressBar) === 0) || ((userSelected.password | progressBar) === 20)"
+                                [class.medium-password]="(userSelected.password | progressBar) === 40" 
+                                [class.medium-strong-password]="(userSelected.password | progressBar) === 65" 
+                                [class.strong-password]="(userSelected.password | progressBar) === 100" 
+                                mode="determinate" 
+                                [value]="userSelected.password | progressBar">
+                            </mat-progress-bar>
+                        </div>
+
                         <mat-error *ngIf="passwordControl.hasError('required')">Senha deve ser Preenchida</mat-error>
                         <mat-error *ngIf="passwordControl.hasError('strengthNotProvide')
-                        && !passwordControl.hasError('required')">Senha Fraca</mat-error>
+                        && !passwordControl.hasError('required')">Digite uma senha mais <strong>forte</strong></mat-error>
                     </mat-form-field>
                     <mat-form-field class="col-6">
                         <mat-label>Confirme a Senha</mat-label>
                         <input 
                             matInput 
                             [(ngModel)]="samePassword" 
-                            [ngModelOptions]="{ updateOn: 'blur' }"
                             name="sameSenha" 
                             type="password" 
                             #passwordSameControl="ngModel"
@@ -69,6 +80,24 @@
                         <mat-error *ngIf="!passwordSameControl.hasError('required') && passwordSameControl.hasError('passwordNotSame')">
                             Senhas divergem</mat-error>
                     </mat-form-field>
+                </div>
+                <div class="row">
+                        <mat-form-field class="col-6">
+                            <mat-label>Data de Nascimento</mat-label>
+                            <input matInput 
+                            [matDatepicker]="picker"
+                            name="dataNascimento"
+                            [(ngModel)]="dataNascimento"
+                            (ngModelChange)="dataNascimentoChanged($event)"
+                            required
+                            readonly
+                            #dataNascimentoControl="ngModel"
+                            >
+                            <mat-hint>DD/MM/AAAA</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="dataNascimentoControl.hasError('required')"><Strong>Data</Strong> deve ser preenchida</mat-error>
+                          </mat-form-field>
                 </div>
             </form>
         </mat-card-content>

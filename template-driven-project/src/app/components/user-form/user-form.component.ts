@@ -17,11 +17,22 @@ export class UserFormComponent implements OnChanges {
 
   @ViewChild('emailControl') emailControl: NgControl = {} as NgControl; 
 
+  red = 'red';
+
   samePassword: string = '';
+  dataNascimento!: Date;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['userSelected'].currentValue != undefined) {
       console.log(this.userSelected)
     }
+  }
+
+  changeSenha() {
+    this.samePassword = ''
+  }
+
+  dataNascimentoChanged(event: any) {
+    console.log(event)
   }
 }

@@ -18,4 +18,29 @@
         border-radius: 6px;
 
     }
+
+    .weak-password {
+
+        & ::ng-deep * {
+            --mdc-linear-progress-active-indicator-color: red !important;
+        }
+    }
+
+    .medium-password {
+        & ::ng-deep * {
+            --mdc-linear-progress-active-indicator-color: orange !important;
+        }
+    }
+    
+    .medium-strong-password {
+        & ::ng-deep * {
+            --mdc-linear-progress-active-indicator-color: rgb(204, 183, 0) !important;
+        }
+    }
+
+    .strong-password {
+        & ::ng-deep * {
+            --mdc-linear-progress-active-indicator-color: rgb(138, 230, 0) !important;
+        }
+    }
 }
