@@ -6,12 +6,13 @@ import { PipeModule } from "../pipes/pipes.module";
 import { DirectiveModule } from "../directives/directive.module";
 import { UsersCardListComponent } from './users-card-list/users-card-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
-import { EmailValidatorDirective } from "../directives/email-validator.directive";
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
     declarations: [
     UsersCardListComponent,
-    UserFormComponent
+    UserFormComponent,
+    DialogComponent
   ],
     imports: [
         FormsModule,

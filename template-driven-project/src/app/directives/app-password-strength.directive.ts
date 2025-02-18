@@ -1,6 +1,5 @@
-import { Directive, forwardRef } from '@angular/core';
-import { AbstractControl, NG_ASYNC_VALIDATORS, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Directive } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
 
 import * as zxcvbn from 'zxcvbn';
 
@@ -18,8 +17,6 @@ export class AppPasswordStrengthDirective implements Validator {
     if (!control || !control.value) {
       return null
     }
-
-    console.log('score', zxcvbn(control.value).score)
 
     if (zxcvbn(control.value).score < 4) {
       return { strengthNotProvide: true }

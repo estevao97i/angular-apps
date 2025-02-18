@@ -8,6 +8,10 @@ import { IUser, Users } from './interfaces/user/user.model';
 import { Genres } from './interfaces/genres/genre.model';
 import { States } from './interfaces/states/states.model';
 import { UsersPlaceHolder } from './interfaces/user-placeholder/user-placeholder.model';
+import { NgFor } from '@angular/common';
+import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +31,8 @@ export class AppComponent implements OnInit {
     private readonly _userService: UserService,
     private readonly _genreService: GenreService,
     private readonly _statesBrazilService: StatesBrazilService,
-    private readonly _usersPlaceHolder: UserPlaceHolderService
+    private readonly _usersPlaceHolder: UserPlaceHolderService,
+    private readonly dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -48,25 +53,21 @@ export class AppComponent implements OnInit {
         this.users = userList;
         this.usersPlaceHolder = usersPlaceHolder
 
-        console.log(this.usersPlaceHolder)
-
         this.usersUpdatedData();
       }, error: (err) => console.log(err)})
   }
 
   private usersUpdatedData() {
     this.newUsers = this.users.map(u => {
-      u.state = this.atualizarState(u)
+      // u.state = this.atualizarState(u)
 
-      u.musics = u.musics.map((music: any) => {
-        music.genre = this.atualizarGenero(music)
-        return music;
-      });
+      // u.musics = u.musics.map((music: any) => {
+      //   music.genre = this.atualizarGenero(music)
+      //   return music;
+      // });
 
       return u;
     });
-
-    console.log('new Users', this.newUsers);
   }
 
   private atualizarState(u: any): any {
@@ -88,5 +89,22 @@ export class AppComponent implements OnInit {
       this.userIdSelected = index;
       this.userSelected = structuredClone(user);
     }
+  }
+
+  formularioSalvar(formulario: NgForm) {
+    console.log(formulario)
+    this.openDialog();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      minWidth: '70%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+      }
+    });
   }
 }

@@ -1,10 +1,10 @@
 <div class="detail-card">
     <mat-card *ngIf="userSelected">
         <mat-card-header>
-            Detalhes
+            <h3 class="title_details">Detalhes</h3>
         </mat-card-header>
         <mat-card-content>
-            <form class="user__form">
+            <form class="user__form" #meuForm="ngForm" (ngSubmit)="onFormSubmit(meuForm)">
                 <div class="row">
                     <mat-form-field class="col-12">
                         <mat-label>Nome</mat-label>
@@ -41,63 +41,123 @@
                 <div class="row">
                     <mat-form-field class="col-6">
                         <mat-label>Senha</mat-label>
-                        <input matInput
-                            [(ngModel)]="userSelected.password"
-                            (ngModelChange)="changeSenha()"
-                            name="senha"
-                            type="password"
-                            #passwordControl="ngModel"
-                            AppPasswordStrength
-                            required
-                        />
+                        <input matInput [(ngModel)]="userSelected.password" (ngModelChange)="changeSenha()" name="senha"
+                            type="password" #passwordControl="ngModel" AppPasswordStrength required />
                         <div style="position: relative; top: 6px;">
-                            <mat-progress-bar 
+                            <mat-progress-bar
                                 [class.weak-password]="((userSelected.password | progressBar) === 0) || ((userSelected.password | progressBar) === 20)"
-                                [class.medium-password]="(userSelected.password | progressBar) === 40" 
-                                [class.medium-strong-password]="(userSelected.password | progressBar) === 65" 
-                                [class.strong-password]="(userSelected.password | progressBar) === 100" 
-                                mode="determinate" 
-                                [value]="userSelected.password | progressBar">
+                                [class.medium-password]="(userSelected.password | progressBar) === 40"
+                                [class.medium-strong-password]="(userSelected.password | progressBar) === 65"
+                                [class.strong-password]="(userSelected.password | progressBar) === 100"
+                                mode="determinate" [value]="userSelected.password | progressBar">
                             </mat-progress-bar>
                         </div>
 
                         <mat-error *ngIf="passwordControl.hasError('required')">Senha deve ser Preenchida</mat-error>
                         <mat-error *ngIf="passwordControl.hasError('strengthNotProvide')
-                        && !passwordControl.hasError('required')">Digite uma senha mais <strong>forte</strong></mat-error>
+                        && !passwordControl.hasError('required')">Digite uma senha mais
+                            <strong>forte</strong></mat-error>
                     </mat-form-field>
                     <mat-form-field class="col-6">
                         <mat-label>Confirme a Senha</mat-label>
-                        <input 
-                            matInput 
-                            [(ngModel)]="samePassword" 
-                            name="sameSenha" 
-                            type="password" 
-                            #passwordSameControl="ngModel"
-                            [appCheckSamePassword]="userSelected.password"
-                            required
-                        />
-                        <mat-error *ngIf="passwordSameControl.hasError('required')">Senha deve ser Preenchida</mat-error>
-                        <mat-error *ngIf="!passwordSameControl.hasError('required') && passwordSameControl.hasError('passwordNotSame')">
+                        <input matInput [(ngModel)]="samePassword" name="sameSenha" type="password"
+                            #passwordSameControl="ngModel" [appCheckSamePassword]="userSelected.password" required />
+                        <mat-error *ngIf="passwordSameControl.hasError('required')">Senha deve ser
+                            Preenchida</mat-error>
+                        <mat-error
+                            *ngIf="!passwordSameControl.hasError('required') && passwordSameControl.hasError('passwordNotSame')">
                             Senhas divergem</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="row">
-                        <mat-form-field class="col-6">
-                            <mat-label>Data de Nascimento</mat-label>
-                            <input matInput 
-                            [matDatepicker]="picker"
-                            name="dataNascimento"
-                            [(ngModel)]="dataNascimento"
-                            (ngModelChange)="dataNascimentoChanged($event)"
-                            required
-                            readonly
-                            #dataNascimentoControl="ngModel"
-                            >
-                            <mat-hint>DD/MM/AAAA</mat-hint>
-                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                            <mat-error *ngIf="dataNascimentoControl.hasError('required')"><Strong>Data</Strong> deve ser preenchida</mat-error>
-                          </mat-form-field>
+                    <mat-form-field class="col-6">
+                        <mat-label>Data de Nascimento</mat-label>
+                        <input matInput [matDatepicker]="picker" name="dataNascimento" [(ngModel)]="dataNascimento"
+                            (ngModelChange)="dataNascimentoChanged($event)" required readonly
+                            #dataNascimentoControl="ngModel">
+                        <mat-hint>DD/MM/AAAA</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="dataNascimentoControl.hasError('required')"><Strong>Data</Strong> deve ser
+                            preenchida</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-6">
+                        <mat-label>Estado</mat-label>
+                        <mat-select [(ngModel)]="userSelected.state" name="estado" required>
+                            <mat-option *ngFor="let estado of statesBrasil" [value]="estado.id">{{ estado.descricao
+                                }}</mat-option>
+                        </mat-select>
+                        <mat-error><strong>Estado</strong> deve ser selecionado</mat-error>
+                        <!-- <input matInput name="estado" [(ngModel)]="estado"> -->
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-divider></mat-divider>
+                        <h3 class="title_details">Minhas Músicas:</h3>
+                        <table mat-table [dataSource]="userSelected.musics" class="mat-elevation-z8">
+
+                            <ng-container matColumnDef="title">
+                                <th mat-header-cell *matHeaderCellDef> Título </th>
+                                <td mat-cell *matCellDef="let element, let i = index">
+                                    <ng-container>
+                                        <mat-form-field>
+                                            <input type="text" matInput [name]="'titulo_' + i"
+                                                [(ngModel)]="element.title" required>
+                                            <mat-error>Campo <strong>Título</strong> obrigatório</mat-error>
+                                        </mat-form-field>
+                                    </ng-container>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="band">
+                                <th mat-header-cell *matHeaderCellDef> Banda </th>
+                                <td mat-cell *matCellDef="let element, let i = index">
+                                    <ng-container>
+                                        <mat-form-field>
+                                            <input type="text" matInput [name]="'banda' + i" [(ngModel)]="element.band"
+                                                required>
+                                            <mat-error>Campo <strong>Banda</strong> obrigatório</mat-error>
+                                        </mat-form-field>
+                                    </ng-container>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="genre">
+                                <th mat-header-cell *matHeaderCellDef> Gênero </th>
+                                <td mat-cell *matCellDef="let element, let i = index">
+                                    <ng-container>
+                                        <mat-form-field>
+                                            <input type="text" matInput [name]="'genre' + i" [(ngModel)]="element.genre"
+                                                [matAutocomplete]="auto" (ngModelChange)="mudouGenero($event)" required>
+                                            <mat-autocomplete #auto="matAutocomplete"
+                                                [displayWith]="displayFn.bind(this)">
+                                                <mat-option *ngFor="let genre of genreAtualizado" [value]="genre.id">
+                                                    {{ genre.description }}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                            <mat-error>Campo <strong>Gênero</strong> obrigatório</mat-error>
+                                        </mat-form-field>
+                                    </ng-container>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="isFavorite">
+                                <th mat-header-cell *matHeaderCellDef> Favorita </th>
+                                <td mat-cell *matCellDef="let element, let i = index">
+                                    <mat-checkbox #favorita [name]="'fav' + i"
+                                    [(ngModel)]="element.isFavorite"
+                                    (ngModelChange)="favChanged($event, i)"></mat-checkbox>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row end-button">
+                    <button mat-flat-button type="submit">Salvar</button>
                 </div>
             </form>
         </mat-card-content>

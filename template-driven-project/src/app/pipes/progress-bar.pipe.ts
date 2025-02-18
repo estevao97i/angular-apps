@@ -18,7 +18,6 @@ export class ProgressBarPipe implements PipeTransform {
     if (!value) {
       return 0;
     }
-    console.log('number score', this.numberProgress[zxcvbn(value).score])
     return this.numberProgress[zxcvbn(value).score];
   }
 

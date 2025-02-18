@@ -6,6 +6,7 @@
     <app-user-form 
     [statesBrasil]="statesBrazil"
     [genres]="genres"
-    [userSelected]="userSelected"></app-user-form>
+    [userSelected]="userSelected"
+    (formularioEmit)="formularioSalvar($event)"></app-user-form>
   </div>
 </div>

@@ -43,4 +43,14 @@
             --mdc-linear-progress-active-indicator-color: rgb(138, 230, 0) !important;
         }
     }
+
+    .title_details {
+        padding: 18px;
+        max-width: fit-content;
+    }
+
+    .end-button {
+        display: flex;
+        justify-content: flex-end;
+    }
 }
