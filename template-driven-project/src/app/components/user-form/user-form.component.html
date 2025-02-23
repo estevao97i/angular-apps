@@ -42,7 +42,7 @@
                     <mat-form-field class="col-6">
                         <mat-label>Senha</mat-label>
                         <input matInput [(ngModel)]="userSelected.password" (ngModelChange)="changeSenha()" name="senha"
-                            type="password" #passwordControl="ngModel" AppPasswordStrength required />
+                            type="text" #passwordControl="ngModel" AppPasswordStrength required />
                         <div style="position: relative; top: 6px;">
                             <mat-progress-bar
                                 [class.weak-password]="((userSelected.password | progressBar) === 0) || ((userSelected.password | progressBar) === 20)"
@@ -115,7 +115,7 @@
                                 <td mat-cell *matCellDef="let element, let i = index">
                                     <ng-container>
                                         <mat-form-field>
-                                            <input type="text" matInput [name]="'banda' + i" [(ngModel)]="element.band"
+                                            <input type="text" matInput [name]="'banda_' + i" [(ngModel)]="element.band"
                                                 required>
                                             <mat-error>Campo <strong>Banda</strong> obrigatório</mat-error>
                                         </mat-form-field>
@@ -128,7 +128,7 @@
                                 <td mat-cell *matCellDef="let element, let i = index">
                                     <ng-container>
                                         <mat-form-field>
-                                            <input type="text" matInput [name]="'genre' + i" [(ngModel)]="element.genre"
+                                            <input type="text" matInput [name]="'genre_' + i" [(ngModel)]="element.genre"
                                                 [matAutocomplete]="auto" (ngModelChange)="mudouGenero($event)" required>
                                             <mat-autocomplete #auto="matAutocomplete"
                                                 [displayWith]="displayFn.bind(this)">
@@ -145,7 +145,7 @@
                             <ng-container matColumnDef="isFavorite">
                                 <th mat-header-cell *matHeaderCellDef> Favorita </th>
                                 <td mat-cell *matCellDef="let element, let i = index">
-                                    <mat-checkbox #favorita [name]="'fav' + i"
+                                    <mat-checkbox #favorita [name]="'fav_' + i"
                                     [(ngModel)]="element.isFavorite"
                                     (ngModelChange)="favChanged($event, i)"></mat-checkbox>
                                 </td>

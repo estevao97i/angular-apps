@@ -93,12 +93,13 @@ export class AppComponent implements OnInit {
 
   formularioSalvar(formulario: NgForm) {
     console.log(formulario)
-    this.openDialog();
+    this.openDialog(formulario);
   }
 
-  openDialog(): void {
+  openDialog(formulario: NgForm): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       minWidth: '70%',
+      data: [this.userSelected, formulario.value]
     });
 
     dialogRef.afterClosed().subscribe(result => {

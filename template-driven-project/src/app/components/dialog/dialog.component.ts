@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent {
+
+  userAntigo!: any;
+  userNovo!: any;
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.userAntigo = data[0];
+    this.userNovo = data[1];
+    console.log('user antigo ', this.userAntigo)
+    console.log('user novo', this.userNovo)
+  }
+
 
 }

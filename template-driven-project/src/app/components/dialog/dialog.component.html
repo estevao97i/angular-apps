@@ -1,1 +1,55 @@
-<p>dialog works!</p>
+<h1 mat-dialog-title class="header">Alterações</h1>
+<div mat-dialog-content>
+    <div class="row header-title">
+        <div class="col-6 header-style"><strong>Antes</strong></div>
+        <div class="col-6 header-style"><strong>Depois</strong></div>
+    </div>
+    <div class="content-data">
+        <div class="row content">
+            <div class="col-6">
+                <label><strong>nome: </strong>{{userAntigo.name}}</label>
+            </div>
+            <div class="col-6">
+                <label><strong>nome: </strong>{{userNovo.nome}}</label>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-6">
+                <label><strong>Usuário: </strong>{{userAntigo.username}}</label>
+            </div>
+            <div class="col-6">
+                <label><strong>Usuário: </strong>{{userNovo.usuario}}</label>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-6">
+                <label><strong>Email: </strong>{{userAntigo.email}}</label>
+            </div>
+            <div class="col-6">
+                <label><strong>Email: </strong>{{userNovo.email}}</label>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-6">
+                <label><strong>Senha: </strong>{{userAntigo.password}}</label>
+            </div>
+            <div class="col-6">
+                <label><strong>Senha: </strong>{{userNovo.senha}}</label>
+            </div>
+        </div>
+        <!-- <div class="col-12 content">
+
+            <label><strong>idade: </strong>18</label>
+            <label><strong>sexo: </strong>M</label>
+        </div>
+        <div class="col-12 content">
+            <label><strong>idade: </strong>19</label>
+            <label><strong>sexo: </strong>M</label>
+        </div> -->
+    </div>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</div>

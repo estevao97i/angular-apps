@@ -1,0 +1,42 @@
+.header-title {
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.header-style {
+    color: white;
+}
+
+
+.content-data {
+    background-color: rgb(206, 206, 206);
+    display: flex;
+    // gap: 2rem;
+    position: relative;
+    flex-direction: column;
+}
+
+.content-data::after {
+    content: '';
+    width: 2px;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    transform: rotate(180deg);
+    left: 50%;
+    top: -.0px;
+}
+
+.content {
+    gap: 2.5rem;
+}
