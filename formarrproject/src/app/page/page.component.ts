@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 export class PageComponent implements OnInit {
 
   form = this.fb.group({
-    data: new FormArray([this.addRow()])
+    data: this.fb.array([this.addRow()])
   })
 
   data$ = new Subject();
@@ -23,7 +23,7 @@ export class PageComponent implements OnInit {
   
   addRow() {
     return this.fb.group({
-      coluna1: [''],
+      coluna1: ['', [this.validateNumber(2)]],
       coluna2: [''],
       coluna3: [0],
     })
@@ -44,6 +44,13 @@ export class PageComponent implements OnInit {
   
   onSubmit() {
     console.log(this.form.getRawValue())
+  }
+
+  validateNumber(target: number): ValidatorFn | null {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const resValidate = control.value && Number(control.value) === target;
+      return resValidate ? { errorNumber: true } : null;
+    }
   }
 
   get getData(): FormArray {

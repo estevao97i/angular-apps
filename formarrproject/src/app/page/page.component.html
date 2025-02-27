@@ -7,10 +7,11 @@
                 <th>col 3</th>
                 <th>acao</th>
             </tr>
-            <tr *ngFor="let item of getData?.value, let formIndex = index, trackBy: trackByFn"
+            <tr *ngFor="let item of getData?.controls, let formIndex = index, trackBy: trackByFn"
                 [formGroupName]="formIndex">
                 <td>
                     <input formControlName="coluna1" type="text">
+                    <div *ngIf="getData.controls[formIndex].get('coluna1')?.hasError('errorNumber')">error na coluna 1</div>
                 </td>
                 <td>
                     <input formControlName="coluna2" type="text">
