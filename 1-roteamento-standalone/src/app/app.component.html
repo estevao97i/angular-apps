@@ -1,0 +1,14 @@
+<div class="menu">
+  <div class="menu__item" routerLinkActive="menu__item--selected" #rlaPrimeiro="routerLinkActive">
+      <a class="menu__link" routerLink="/primeiro">
+        Primeiro {{ rlaPrimeiro.isActive ? 'ativo' : '' }}
+      </a>
+  </div>
+  <div class="menu__item" routerLinkActive="menu__item--selected" #rlaSegundo="routerLinkActive">
+      <a class="menu__link" routerLink="/segundo" outerLinkActive="menu__link--active">
+        Segundo {{ rlaSegundo.isActive ? 'ativo' : '' }}
+      </a>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
