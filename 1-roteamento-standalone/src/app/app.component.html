@@ -1,15 +1,15 @@
 <div class="menu">
-  <div class="menu__item" routerLinkActive="menu__item--selected" #rlaBase="routerLinkActive">
+  <div class="menu__item" routerLinkActive="menu__item--selected" [routerLinkActiveOptions]="{exact: true}" #rlaBase="routerLinkActive">
       <a class="menu__link" routerLink="/component">
         Base {{ rlaBase.isActive ? 'ativo' : '' }}
       </a>
   </div>
-  <div class="menu__item" routerLinkActive="menu__item--selected" #rlaPrimeiro="routerLinkActive">
+  <div class="menu__item" routerLinkActive="menu__item--selected" [routerLinkActiveOptions]="{exact: true}" #rlaPrimeiro="routerLinkActive">
       <a class="menu__link" routerLink="/component/primeiro">
         Primeiro {{ rlaPrimeiro.isActive ? 'ativo' : '' }}
       </a>
   </div>
-  <div class="menu__item" routerLinkActive="menu__item--selected" #rlaSegundo="routerLinkActive">
+  <div class="menu__item" routerLinkActive="menu__item--selected" [routerLinkActiveOptions]="{exact: true}" #rlaSegundo="routerLinkActive">
       <a class="menu__link" routerLink="/component/segundo" outerLinkActive="menu__link--active">
         Segundo {{ rlaSegundo.isActive ? 'ativo' : '' }}
       </a>
