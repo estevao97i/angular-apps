@@ -1,0 +1,19 @@
+<div class="menu">
+  <div class="menu__item">
+      <a class="menu__link" routerLink="/inicio" routerLinkActive="menu__link--selected" >Início</a>
+  </div>
+  <div class="menu__item">
+      <a class="menu__link" [class.menu__link--disabled]="routerSair.isActive" routerLink="/info" routerLinkActive="menu__link--selected">Informações</a>
+  </div>
+  <div class="menu__item">
+    <a class="menu__link" [class.menu__link--disabled]="routerSair.isActive" routerLink="/contatos" routerLinkActive="menu__link--selected">Contatos</a>
+  </div>
+  <div class="menu__item">
+    <a class="menu__link" [class.menu__link--disabled]="routerSair.isActive" routerLink="/sobre" routerLinkActive="menu__link--selected">Sobre</a>
+  </div>
+  <div class="menu__item">
+    <a class="menu__link" #routerSair="routerLinkActive" routerLink="/sair" routerLinkActive="menu__link--selected">Sair</a>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
