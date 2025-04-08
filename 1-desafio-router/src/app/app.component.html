@@ -1,25 +1,34 @@
 <div class="menu">
   <div class="menu__item">
-    <a class="menu__link" routerLink="/inicio" routerLinkActive="menu__link--selected">Início</a>
+    <a class="menu__link"
+    routerLink="/"
+    routerLinkActive="menu__link--selected">Início</a>
   </div>
   <div class="menu__item">
     <a class="menu__link" [class.menu__link--disabled]="routerSair.isActive"
-      [routerLink]="!routerSair.isActive ? '/info' : null" routerLinkActive="menu__link--selected">Informações</a>
+      [routerLink]="!routerSair.isActive ? '/info' : null"
+      routerLinkActive="menu__link--selected"
+      #rlaInfo="routerLinkActive"
+      >Informações</a>
   </div>
   <div class="menu__item">
     <a class="menu__link" [class.menu__link--disabled]="routerSair.isActive"
-      [routerLink]="!routerSair.isActive ? '/contatos' : null"
-      routerLinkActive="menu__link--selected">Contatos</a>
+      [routerLink]="!routerSair.isActive ? '/contatos' : null" routerLinkActive="menu__link--selected"
+      #rlaContatos="routerLinkActive">Contatos</a>
   </div>
   <div class="menu__item">
     <a class="menu__link" [class.menu__link--disabled]="routerSair.isActive"
-      [routerLink]="!routerSair.isActive ? '/sobre' : null" routerLink="/sobre"
-      routerLinkActive="menu__link--selected">Sobre</a>
+      [routerLink]="!routerSair.isActive ? '/sobre' : null" routerLinkActive="menu__link--selected"
+      #rlaSobre="routerLinkActive">Sobre</a>
   </div>
   <div class="menu__item">
     <a class="menu__link" #routerSair="routerLinkActive" routerLink="/sair"
       routerLinkActive="menu__link--selected">Sair</a>
   </div>
 </div>
+
+@if (!rlaInfo.isActive && !rlaContatos.isActive && !rlaSobre.isActive && !routerSair.isActive) {
+  <p>Nenhuma rota ativa</p>
+}
 
 <router-outlet></router-outlet>
