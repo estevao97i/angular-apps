@@ -25,7 +25,7 @@ export const routes: Routes = [
         component: PrimeiroComponent,
         children: [
             {
-                path: 'page-a',
+                path: '',
                 title: 'Page A',
                 component: PageAComponent
             },
