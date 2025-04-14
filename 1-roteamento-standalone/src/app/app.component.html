@@ -1,4 +1,9 @@
 <div class="menu">
+  <div class="menu__item" routerLinkActive="menu__item--selected" [routerLinkActiveOptions]="{exact: true}">
+      <a class="menu__link" routerLink="/">
+        Inital Page
+      </a>
+  </div>
   <div class="menu__item" routerLinkActive="menu__item--selected" [routerLinkActiveOptions]="{exact: true}" #rlaBase="routerLinkActive">
       <a class="menu__link" routerLink="/component">
         Base {{ rlaBase.isActive ? 'ativo' : '' }}
