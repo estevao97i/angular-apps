@@ -8,10 +8,15 @@ import { PageAComponent } from './components/primeiro/components/page-a/page-a.c
 import { PageBComponent } from './components/primeiro/components/page-b/page-b.component';
 
 export const routes: Routes = [
+    // {
+    //     path: '',
+    //     title: 'Inicial',
+    //     component: InitalComponent,
+    // },
     {
         path: '',
-        title: 'Inicial',
-        component: InitalComponent,
+        redirectTo: 'component',
+        pathMatch: 'full'
     },
     // com lazy loading
     { 
