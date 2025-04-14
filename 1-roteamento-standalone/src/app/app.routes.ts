@@ -38,6 +38,14 @@ export const routes: Routes = [
                 path: 'page-b',
                 title: 'Page B',
                 component: PageBComponent
+            },
+            {
+                path: 'redirect-b',
+                redirectTo: 'page-b'
+            },
+            {
+                path: 'redirect-a',
+                redirectTo: 'redirect-a'
             }
         ]
         // loadComponent: () => import('../app/components/primeiro/primeiro.component').then(m => m.PrimeiroComponent)
