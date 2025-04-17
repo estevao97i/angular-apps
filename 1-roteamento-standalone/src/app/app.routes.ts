@@ -27,28 +27,28 @@ export const routes: Routes = [
     { 
         path: 'component/primeiro',
         title: 'Primeiro',
-        component: PrimeiroComponent,
-        children: [
-            {
-                path: '',
-                title: 'Page A',
-                component: PageAComponent
-            },
-            {
-                path: 'page-b',
-                title: 'Page B',
-                component: PageBComponent
-            },
-            {
-                path: 'redirect-b',
-                redirectTo: 'page-b'
-            },
-            {
-                path: 'redirect-a',
-                redirectTo: 'redirect-a'
-            }
-        ]
-        // loadComponent: () => import('../app/components/primeiro/primeiro.component').then(m => m.PrimeiroComponent)
+        // component: PrimeiroComponent,
+        // children: [
+        //     {
+        //         path: '',
+        //         title: 'Page A',
+        //         component: PageAComponent
+        //     },
+        //     {
+        //         path: 'page-b',
+        //         title: 'Page B',
+        //         component: PageBComponent
+        //     },
+        //     {
+        //         path: 'redirect-b',
+        //         redirectTo: 'page-b'
+        //     },
+        //     {
+        //         path: 'redirect-a',
+        //         redirectTo: 'redirect-a'
+        //     }
+        // ]
+        loadComponent: () => import('../app/components/primeiro/primeiro.component').then(m => m.PrimeiroComponent)
     },
     { 
         path: 'component/segundo',
