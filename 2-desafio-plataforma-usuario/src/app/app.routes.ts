@@ -10,8 +10,7 @@ export const routes: Routes = [
     },
     {
         path: 'general',
-        loadComponent: () => import('./components/general-page/general-page.component').then(m => m.GeneralPageComponent),
-        pathMatch: 'full'
+        loadChildren: () => import('./components/general-page/general-page.routes').then(m => m.routes)
     },
     {
         path: 'transaction',

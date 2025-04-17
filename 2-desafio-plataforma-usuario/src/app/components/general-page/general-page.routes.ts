@@ -7,7 +7,6 @@ import { GeneralPageComponent } from "./general-page.component";
 export const routes: Routes = [
     {
         path: '',
-        pathMatch: 'full',
         component: GeneralPageComponent,
         title: 'Página Geral',
         children: [
