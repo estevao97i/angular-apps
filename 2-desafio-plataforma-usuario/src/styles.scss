@@ -303,6 +303,7 @@ body {
         left: 11%;
         transform: rotate(350deg);
         z-index: 0;
+        transition: .3s;
 
         &--selected {
             z-index: 1;
