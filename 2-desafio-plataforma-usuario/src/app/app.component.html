@@ -1,19 +1,19 @@
 <div class="container">
   <div class="card">
     <div class="card__side-menu">
-      <div class="menu__item" routerLink="">
+      <div class="menu__item" routerLink="" routerLinkActive="menu__item--selected" #rlaInicio="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
         <span class="material-symbols-outlined menu__item-icon">
           home
         </span>
         Início
       </div>
-      <div class="menu__item menu__item--selected" routerLink="general">
+      <div class="menu__item" routerLinkActive="menu__item--selected" routerLink="general" #rlaGeneral="routerLinkActive">
         <span class="material-symbols-outlined menu__item-icon">
           person
         </span>
         Geral
       </div>
-      <div class="menu__item" routerLink="transaction">
+      <div class="menu__item" routerLink="transaction" routerLinkActive="menu__item--selected" #rlaTransaction="routerLinkActive"> 
         <span class="material-symbols-outlined menu__item-icon">
           credit_card
         </span>

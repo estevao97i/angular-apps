@@ -13,6 +13,11 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                redirectTo: 'basico',
+                pathMatch: 'full'
+            },
+            {
+                path: 'basico',
                 title: 'Básico',
                 pathMatch: 'full',
                 component: BasicComponent,

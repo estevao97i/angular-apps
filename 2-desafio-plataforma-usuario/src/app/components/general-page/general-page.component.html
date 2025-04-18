@@ -1,13 +1,13 @@
 <!-- ================= Página de General ================= -->
 <div class="general">
     <div class="general__menu">
-        <div class="general__menu-item general__menu-item--selected" routerLink="./">
+        <div class="general__menu-item" routerLinkActive="general__menu-item--selected" routerLink="basico" #rlaBasico="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
             Básica
         </div>
-        <div class="general__menu-item" routerLink="contact">
+        <div class="general__menu-item" routerLink="contact" routerLinkActive="general__menu-item--selected" #rlaContact="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
             Contato
         </div>
-        <div class="general__menu-item" routerLink="address">
+        <div class="general__menu-item" routerLink="address" routerLinkActive="general__menu-item--selected" #rlaAddress="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
             Endereço
         </div>
     </div>

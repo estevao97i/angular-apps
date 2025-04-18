@@ -1,7 +1,7 @@
 <!-- ================= Página de Transações ================= -->
 <div class="transactions">
   <div class="transactions__cards-container">
-    <div class="card-group-left card-group-left--selected" routerLink="">
+    <div class="card-group-left card-group-left--selected" routerLink="credito">
       <div class="card card--credit">
         <div class="logo"><img
             src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/Visa-Logo-PNG-Image.png" alt="Visa">
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="card-group-right">
+    <div class="card-group-right" routerLink="debito">
       <div class="card card--debit">
         <div class="logo"><img
             src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/Visa-Logo-PNG-Image.png" alt="Visa">
@@ -32,6 +32,6 @@
     </div>
   </div>
   <div class="transactions__content">
-    <router-outler></router-outler>
+    <router-outlet></router-outlet>
   </div>
 </div>
