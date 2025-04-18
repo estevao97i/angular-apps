@@ -14,7 +14,7 @@ export const routes: Routes = [
     },
     {
         path: 'transaction',
-        loadComponent: () => import('./components/transaction-page/transaction-page.component').then(m => m.TransactionPageComponent)
+        loadChildren: () => import('./components/transaction-page/transaction-page.routes').then(m => m.transactionRoutes)
     },
     {
         path: '**',

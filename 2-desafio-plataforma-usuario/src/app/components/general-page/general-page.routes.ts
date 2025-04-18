@@ -9,10 +9,12 @@ export const routes: Routes = [
         path: '',
         component: GeneralPageComponent,
         title: 'Página Geral',
+
         children: [
             {
                 path: '',
                 title: 'Básico',
+                pathMatch: 'full',
                 component: BasicComponent,
             },
             {
@@ -21,7 +23,7 @@ export const routes: Routes = [
                 component: ContactComponent,
             },
             {
-                path: 'adress',
+                path: 'address',
                 title: 'Endereço',
                 component: AdressComponent,
             },
