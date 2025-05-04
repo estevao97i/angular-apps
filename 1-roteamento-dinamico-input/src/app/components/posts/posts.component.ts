@@ -15,10 +15,12 @@ export class PostsComponent implements OnInit{
 
   private readonly postService = inject(PostService);
   post$: Observable<Post[]> = of([])
-  @Input() userId: string = ''
+  @Input() set userId (value: string) {
+    this.post$ = this.postService.getPostsByUser(value);
+  }
 
   ngOnInit(): void {
-    this.post$ = this.postService.getPostsByUser(this.userId);
+    // this.post$ = this.postService.getPostsByUser(this.userId);
   }
 
 }
