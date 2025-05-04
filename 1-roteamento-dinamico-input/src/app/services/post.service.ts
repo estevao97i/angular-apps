@@ -10,7 +10,7 @@ export class PostService {
 
     private readonly _http = inject(HttpClient);
 
-    getPostsByUser(userId: number): Observable<Post> {
-        return this._http.get<Post>(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+    getPostsByUser(userId: number): Observable<Post[]> {
+        return this._http.get<Post[]>(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
     }
 }

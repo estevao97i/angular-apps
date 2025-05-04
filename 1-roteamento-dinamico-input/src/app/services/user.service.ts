@@ -10,7 +10,7 @@ export class UserService {
 
     private readonly _http = inject(HttpClient);
 
-    getUsers(): Observable<User> {
-        return this._http.get<User>(`https://jsonplaceholder.typicode.com/users`);
+    getUsers(): Observable<User[]> {
+        return this._http.get<User[]>(`https://jsonplaceholder.typicode.com/users`);
     }
 }
