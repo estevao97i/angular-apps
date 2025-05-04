@@ -1,1 +1,7 @@
-<p>posts works!</p>
+<div style="display: flex;">
+    @for (post of post$ | async; track post) {
+        <span>
+            {{ post.title }}
+        </span>
+    }
+</div>
