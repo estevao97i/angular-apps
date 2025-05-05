@@ -13,4 +13,8 @@ export class PostService {
     getPostsByUser(userId: any): Observable<Post[]> {
         return this._http.get<Post[]>(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
     }
+
+    getCommentsByPost(userId: any, postId: any): Observable<Post[]> {
+        return this._http.get<Post[]>(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+    }
 }

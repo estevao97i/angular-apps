@@ -1,7 +1,11 @@
-<div style="display: flex;">
+<div style="display: flex; flex-wrap: wrap; gap: 1rem">
     @for (post of post$ | async; track post) {
-        <span>
+        <span [routerLink]="[post.id]" style="cursor: pointer;">
             {{ post.title }}
+            {{ post.body }}
         </span>
     }
+    <div>
+        <router-outlet></router-outlet>
+    </div>
 </div>

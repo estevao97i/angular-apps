@@ -1,0 +1,6 @@
+@for (comment of comment$ | async; track comment) {
+    <span>
+        {{ comment.name }}
+        {{ comment.body }}
+    </span>
+}
