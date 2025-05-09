@@ -1,0 +1,9 @@
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;justify-content: center;">
+    @for (user of users$ | async; track user) {
+        <div style="border: 1px solid gray; padding: 1rem;cursor: pointer;" [routerLink]="[user.id]">
+            <h1>{{ user.name }}</h1>
+            <label>{{ user.username }}</label>
+        </div>
+    }
+</div>
+<router-outlet></router-outlet>
