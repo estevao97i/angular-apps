@@ -12,12 +12,15 @@ export const routes: Routes = [
         path: 'users',
         title: 'Lista de Usuários',
         component: UserListComponent,
-        children: [
-            {
-                path: ':id',
-                title: 'Detalhes do Usuário',
-                component: UserDetailComponent
-            }
-        ]
-    }
+    },
+    {
+        path: 'user-detail/:id',
+        title: 'Detalhes do Usuário',
+        component: UserDetailComponent
+    },
+    {
+        path: '**',
+        redirectTo: 'users',
+        pathMatch: 'full'
+    },
 ];

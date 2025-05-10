@@ -1,1 +1,17 @@
-<p>user-detail works!</p>
+@if (user != undefined) {
+    <div >
+        <div>
+            código: <label>{{ user.id }}</label>
+        </div>
+        <div>
+            nome: <label>{{ user.name }}</label>
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 3rem; flex-wrap: wrap;justify-content: center;;">
+        <label style="cursor: pointer;" [routerLink]="['/user']">Usuários</label>
+        <label>Todos</label>
+        <label>Álbuns</label>
+        <label>Posts</label>
+    </div>
+}
